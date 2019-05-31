@@ -46,6 +46,7 @@ create table PETCLINIC_PET (
     NAME varchar(255) not null,
     PET_TYPE_ID varchar(36) not null,
     OWNER_ID varchar(36) not null,
+    PHOTO_ID varchar(36),
     --
     primary key (ID)
 )^

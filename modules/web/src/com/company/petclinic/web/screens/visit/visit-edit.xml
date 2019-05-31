@@ -35,6 +35,9 @@
                 </pickerField>
             </column>
         </form>
+        <hbox id="invoiceBox" spacing="true" align="TOP_RIGHT">
+            <button id="printInvoice" caption="Print Invoice" align="TOP_RIGHT"/>
+        </hbox>
         <groupBox id="consumablesBox" caption="msg://com.company.petclinic.entity/Visit.consumables">
             <table id="consumablesTable" dataContainer="consumablesDc" width="100%" height="200px">
                 <actions>

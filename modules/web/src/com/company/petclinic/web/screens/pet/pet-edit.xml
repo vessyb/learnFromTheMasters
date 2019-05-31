@@ -20,22 +20,34 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="petDc">
-            <column width="250px">
-                <textField id="nameField" property="name"/>
-                <lookupPickerField id="petTypeField" optionsContainer="petTypesDc" property="petType">
-                    <actions>
-                        <action id="lookup" type="picker_lookup"/>
-                    </actions>
-                </lookupPickerField>
-                <pickerField id="ownerField" property="owner">
-                    <actions>
-                        <action id="lookup" type="picker_lookup"/>
-                        <action id="clear" type="picker_clear"/>
-                    </actions>
-                </pickerField>
-            </column>
-        </form>
+        <hbox spacing="true">
+            <form id="form" dataContainer="petDc">
+                <column width="250px">
+                    <textField id="nameField" property="name"/>
+                    <lookupPickerField id="petTypeField" optionsContainer="petTypesDc" property="petType">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                        </actions>
+                    </lookupPickerField>
+                    <pickerField id="ownerField" property="owner">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                </column>
+            </form>
+            <groupBox spacing="true" align="TOP_RIGHT">
+                <image id="petPhoto" property="photo" height="250px" width="250px"/>
+                <buttonsPanel>
+                    <upload id="uploadField"/>
+                    <button id="downloadImageBtn"
+                            caption="download"/>
+                    <button id="clearImageBtn"
+                            caption="clear"/>
+                </buttonsPanel>
+            </groupBox>
+        </hbox>
         <hbox id="editActions" spacing="true">
             <button action="windowCommitAndClose"/>
             <button action="windowClose"/>

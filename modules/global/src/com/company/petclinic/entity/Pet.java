@@ -1,9 +1,13 @@
 package com.company.petclinic.entity;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.cuba.core.entity.FileDescriptor;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.Lookup;
 import com.haulmont.cuba.core.entity.annotation.LookupType;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -31,6 +35,20 @@ public class Pet extends StandardEntity {
 
     @OneToMany(mappedBy = "pet")
     protected List<Visit> visits;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PHOTO_ID")
+    protected FileDescriptor photo;
+
+    public FileDescriptor getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(FileDescriptor photo) {
+        this.photo = photo;
+    }
 
     public List<Visit> getVisits() {
         return visits;

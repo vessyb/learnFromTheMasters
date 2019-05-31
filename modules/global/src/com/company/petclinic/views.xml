@@ -2,10 +2,9 @@
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
     <view entity="petclinic_Pet" name="pet_full_view" extends="_local">
-        <property name="petType" view="_minimal">
-            <property name="name"/>
-        </property>
+        <property name="petType" view="_minimal"/>
         <property name="owner" view="_minimal"/>
+        <property name="photo" view="_minimal"/>
     </view>
     <view entity="petclinic_Veterinarian" name="veterinarian-edit" extends="_local">
         <property name="user" view="_minimal"/>
