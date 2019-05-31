@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://caption"
+        messagesPack="com.company.petclinic.web">
+    <data>
+        <collection id="petTypeDc"
+                    class="com.company.petclinic.entity.PetType"
+                    view="_local">
+            <loader id="petTypeDl">
+                <query>
+                    <![CDATA[
+                        select pt from petclinic_PetType pt
+                    ]]>
+                </query>
+            </loader>
+        </collection>
+        <!-- <collection id="petDc"
+                     class="com.company.petclinic.entity.Pet"
+                     view="pet_full_view">
+             <loader id="petDl">
+                 <query>
+                     <![CDATA[
+                         select p from petclinic_Pet p
+                     ]]>
+                 </query>
+             </loader>
+         </collection>-->
+    </data>
+    <layout>
+        <split id="split" orientation="vertical" width="100%" height="100%" visible="true">
+            <form id="petTypeForm">
+                <hbox id="tryVbox" spacing="true" align="MIDDLE_CENTER">
+                    <textField id="txtBox" align="TOP_LEFT" width="50%" height="100%"/>
+                    <button id="addTypeBtn" caption="Add Type" align="TOP_RIGHT"/>
+                </hbox>
+            </form>
+            <table id="petTypesTable" dataContainer="petTypeDc" width="100%" height="100%">
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <rows/>
+            </table>
+            <!-- <table id="petsTable" dataContainer="petDc" width="100%" height="50%">
+                 <columns>
+                     <column id="name"/>
+                     <column id="petType"/>
+                     <column id="owner"/>
+                 </columns>
+                 <rows/>
+             </table>-->
+        </split>
+    </layout>
+</window>

@@ -1,0 +1,5 @@
+@import "hover-ext";
+
+@mixin com_company_petclinic {
+  @include com_company_petclinic-hover-ext;
+}

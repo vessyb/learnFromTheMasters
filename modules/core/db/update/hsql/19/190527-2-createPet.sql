@@ -1,0 +1,4 @@
+alter table PETCLINIC_PET add constraint FK_PETCLINIC_PET_ON_PET_TYPE foreign key (PET_TYPE_ID) references PETCLINIC_PET_TYPE(ID);
+alter table PETCLINIC_PET add constraint FK_PETCLINIC_PET_ON_OWNER foreign key (OWNER_ID) references PETCLINIC_OWNER(ID);
+create index IDX_PETCLINIC_PET_ON_PET_TYPE on PETCLINIC_PET (PET_TYPE_ID);
+create index IDX_PETCLINIC_PET_ON_OWNER on PETCLINIC_PET (OWNER_ID);

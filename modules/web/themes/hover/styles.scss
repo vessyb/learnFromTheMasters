@@ -1,0 +1,11 @@
+@import "hover-defaults";
+@import "com.company.petclinic/hover-ext-defaults";
+@import "app-components";
+@import "com.company.petclinic/hover-ext";
+
+.hover {
+  // include auto-generated app components SCSS
+  @include app_components;
+
+  @include com_company_petclinic-hover-ext;
+}

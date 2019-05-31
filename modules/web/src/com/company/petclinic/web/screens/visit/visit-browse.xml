@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd"
+        caption="msg://browseCaption"
+        focusComponent="visitsTable"
+        messagesPack="com.company.petclinic.web.screens.visit">
+    <data readOnly="true">
+        <collection id="visitsDc"
+                    class="com.company.petclinic.entity.Visit"
+                    view="visit-view">
+            <loader id="visitsDl">
+                <query>
+                    <![CDATA[select e from petclinic_Visit e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+
+    <layout
+            spacing="true">
+        <vbox expand="visitsPivotTable" height="100%" spacing="true">
+            <filter id="filter"
+                    applyTo="visitsTable"
+                    dataLoader="visitsDl">
+                <properties include=".*"/>
+            </filter>
+            <groupTable id="visitsTable"
+                        width="100%"
+                        dataContainer="visitsDc">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="number"/>
+                    <column id="vet"/>
+                    <column id="date"/>
+                    <column id="description"/>
+                    <column id="amount"/>
+                    <column id="hours"/>
+                    <column id="pet"/>
+                </columns>
+                <rowsCount/>
+                <buttonsPanel id="buttonsPanel"
+                              alwaysVisible="true">
+                    <button id="createBtn" action="visitsTable.create"/>
+                    <button id="editBtn" action="visitsTable.edit"/>
+                    <button id="removeBtn" action="visitsTable.remove"/>
+                </buttonsPanel>
+            </groupTable>
+            <hbox id="lookupActions" spacing="true" visible="false">
+                <button action="lookupSelectAction"/>
+                <button action="lookupCancelAction"/>
+            </hbox>
+            <chart:pivotTable id="visitsPivotTable"
+                              dataContainer="visitsDc"
+                              height="AUTO"
+                              renderer="HEATMAP"
+                              width="100%">
+                <chart:aggregation mode="SUM">
+                    <chart:property name="amount"/>
+                </chart:aggregation>
+                <chart:columns>
+                    <chart:column value="date"/>
+                </chart:columns>
+                <chart:properties>
+                    <chart:property name="amount"/>
+                    <chart:property name="date"/>
+                    <chart:property name="vet"/>
+                </chart:properties>
+                <chart:rows>
+                    <chart:row value="veterinarian"/>
+                </chart:rows>
+            </chart:pivotTable>
+        </vbox>
+    </layout>
+</window>
